@@ -1,11 +1,19 @@
 from AddressBookConsoleService import AddressBookConsoleService
+
 ADD_CONTACT = 1
 DISPLAY_CONTACT = 2
 EXIT = 3
 
+
 if __name__ == "__main__":
     console_service = AddressBookConsoleService()
     print("Welcome to Address Book Management System")
+
+
+if __name__ == "__main__":
+    console_service = AddressBookConsoleService()
+    print("Welcome to Address Book Management System")
+
     while True:
         print(" 1 Add Contact ",
         "\n 2 Display Contact",
