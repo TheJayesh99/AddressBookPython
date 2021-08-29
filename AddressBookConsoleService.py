@@ -3,6 +3,7 @@ from Contacts import Contact
 class AddressBookConsoleService:
     contact_list = []
     def create_contact(self):
+
         first_name = input("Enter first name \n")
         last_name = input("Enter last name \n")
         address = input("Enter address \n")
@@ -23,7 +24,7 @@ class AddressBookConsoleService:
         }
         contact = Contact(contact_dict)
         return contact
-
+      
     def add_contact(self):
         contact = self.create_contact()
         self.contact_list.append(contact)
@@ -31,3 +32,4 @@ class AddressBookConsoleService:
     def display_contact(self):
         contacts = "\n".join(str(contact) for contact in self.contact_list ) 
         print(contacts)
+
