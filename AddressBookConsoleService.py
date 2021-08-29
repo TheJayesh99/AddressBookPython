@@ -59,10 +59,31 @@ class AddressBookConsoleService:
         """
         Method to edit existing contact
         """
-        first_name = input("Enter the person name of whom contact you have to edit \n")
-        contact_to_edit = [contact for contact in self.contact_list if contact.first_name == first_name] 
+        contact_to_edit = self.search_contact_by_name()
         if len(contact_to_edit) == 0:
             print("Contact not found")
         else: 
             self.get_Details(contact_to_edit[0])
             print("Contact Edited Sucessfully")
+
+    def search_contact_by_name(self):
+
+        """
+        method to search contact by first name 
+        """
+        first_name = input("Enter the person name \n")
+        contacts = [contact for contact in self.contact_list if contact.first_name == first_name]
+        return contacts
+
+    def delete_contact(self):
+
+        """
+        Method to delete contact from address book
+        """
+        contact_to_delete = self.search_contact_by_name()
+        if len(contact_to_delete) == 0:
+            print("Contact not found")
+        else:
+            self.contact_list.remove(contact_to_delete[0])
+            print("Contact removed sucessfully")
+        
