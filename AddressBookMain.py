@@ -9,6 +9,11 @@ if __name__ == "__main__":
     console_service = AddressBookConsoleService()
     print("Welcome to Address Book Management System")
 
+
+if __name__ == "__main__":
+    console_service = AddressBookConsoleService()
+    print("Welcome to Address Book Management System")
+
     while True:
         print(" 1 Add Contact ",
         "\n 2 Display Contact",
