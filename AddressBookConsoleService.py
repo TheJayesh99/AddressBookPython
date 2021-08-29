@@ -23,7 +23,6 @@ class AddressBookConsoleService:
         }
         contact = Contact(contact_dict)
         return contact
-
     def add_contact(self):
         contact = self.create_contact()
         self.contact_list.append(contact)
