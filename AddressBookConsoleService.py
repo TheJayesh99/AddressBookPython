@@ -2,7 +2,7 @@ from Contacts import Contact
 
 class AddressBookConsoleService:
     
-    contact_list = []
+    address_books = {}
 
     def create_contact(self):
         
@@ -44,46 +44,58 @@ class AddressBookConsoleService:
         Method to add contact to local storage
         """
         contact = self.create_contact()
-        self.contact_list.append(contact)
+        print("contact created")
+        address_book_name = input("Enter the address book name \n")
+        address_book = self.address_books.get(address_book_name) 
+        # if book does no already exists then creating a new book
+        if address_book == None:
+            contact_list = [contact]
+            self.address_books[address_book_name] = contact_list
+        # if book already exsists then adding contact to existing book   
+        else:
+            address_book.append(contact)
 
     def display_contact(self):
 
         """
         Method to display all the contact that are present in the local storage
         """
-        contacts = "\n".join(str(contact) for contact in self.contact_list ) 
-        print(contacts)
+        for address_book in self.address_books:
+            contacts = "\n".join(str(contact) for contact in self.address_books.get(address_book)) 
+            print(f"Contacts In {address_book} are \n{contacts}")
 
     def edit_contact(self):
         
         """
         Method to edit existing contact
         """
-        contact_to_edit = self.search_contact_by_name()
-        if len(contact_to_edit) == 0:
-            print("Contact not found")
-        else: 
-            self.get_Details(contact_to_edit[0])
-            print("Contact Edited Sucessfully")
-
-    def search_contact_by_name(self):
-
-        """
-        method to search contact by first name 
-        """
-        first_name = input("Enter the person name \n")
-        contacts = [contact for contact in self.contact_list if contact.first_name == first_name]
-        return contacts
+        book_name = input("Enter the address book name ")
+        address_book = self.address_books.get(book_name)
+        if address_book != None:
+            first_name = input("Enter the person name \n")
+            contact_to_edit = [contact for contact in address_book if contact.first_name == first_name]
+            if len(contact_to_edit) == 0:
+                print("Contact not found")
+            else: 
+                self.get_Details(contact_to_edit[0])
+                print("Contact Edited Sucessfully")
+        else:
+            print("No such address book")
 
     def delete_contact(self):
 
         """
         Method to delete contact from address book
         """
-        contact_to_delete = self.search_contact_by_name()
-        if len(contact_to_delete) == 0:
-            print("Contact not found")
+        book_name = input("Enter the address book name ")
+        address_book = self.address_books.get(book_name)
+        if address_book != None:
+            first_name = input("Enter the person name \n")
+            contact_to_delete = [contact for contact in address_book if contact.first_name == first_name]
+            if len(contact_to_delete) == 0:
+                print("Contact not found")
+            else:
+                address_book.remove(contact_to_delete[0])
+                print("Contact removed sucessfully")
         else:
-            self.contact_list.remove(contact_to_delete[0])
-            print("Contact removed sucessfully")
-        
+            print("No such address book")
