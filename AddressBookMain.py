@@ -6,6 +6,7 @@ EDIT_CONTACT = 3
 DELETE_CONTACT = 4
 SEARCH_BY_CITY_OR_STATE = 5
 VIEW_BY_CITY_OR_STATE = 6
+COUNT_BY_CITY_OR_STATE = 7
 EXIT = 0
 
 if __name__ == "__main__":
@@ -20,6 +21,7 @@ if __name__ == "__main__":
         "\n 4 Delete Contact"
         "\n 5 Search by City or State"
         "\n 6 View Person by City or State"
+        "\n 7 Count number of contacts having same city or state"
         "\n 0 Exit")
         user_choice = int(input())
 
@@ -40,6 +42,9 @@ if __name__ == "__main__":
 
         elif user_choice == VIEW_BY_CITY_OR_STATE:
             console_service.view_person_by_location()
+        
+        elif user_choice == COUNT_BY_CITY_OR_STATE:
+            console_service.count_number_of_contact_by_location()
 
         elif user_choice == EXIT:
             print("Thanks for using us ")
