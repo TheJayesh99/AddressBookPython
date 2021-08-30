@@ -118,10 +118,34 @@ class AddressBookConsoleService:
     def search_person_by_location(self):
 
         """
-        Method to search person details by their name across the multiple address book
+        Method to search person details by their location across the multiple address book
+        """
+        contacts = self.contact_founder()
+        if len(contacts) == 0:
+            print("No such contact found")
+        else:
+            search_contacts = "\n".join(contact.first_name +" "+ contact.last_name for contact in contacts)
+            print(search_contacts)
+    
+    def view_person_by_location(self):
+
+        """
+        Method to search person details by their location across the multiple address book
+        """
+        contacts = self.contact_founder()
+        if len(contacts) == 0:
+            print("No such contact found")
+        else:
+            view_contacts = "\n".join(str(contact) for contact in contacts)
+            print(view_contacts)
+
+    def contact_founder(self):
+
+        """
+        Method to search contact by location  
         """
         location = input("Enter the city or state of which contacts name you have to find \n")
+        matched_contacts_with_location = []
         for address_book in self.address_books:
-            contacts = [contact.first_name +" "+ contact.last_name for contact in self.address_books.get(address_book) if contact.city == location or contact.state == location]
-            print(contacts)
-    
+            matched_contacts_with_location.extend([contact for contact in self.address_books.get(address_book) if contact.city == location or contact.state == location])
+        return matched_contacts_with_location
