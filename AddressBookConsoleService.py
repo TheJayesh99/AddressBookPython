@@ -114,3 +114,14 @@ class AddressBookConsoleService:
         function parameter of given address book and returns the list of contact have first name 
         """
         return  [contact for contact in address_book if contact.first_name == first_name]
+
+    def search_person_by_location(self):
+
+        """
+        Method to search person details by their name across the multiple address book
+        """
+        location = input("Enter the city or state of which contacts name you have to find \n")
+        for address_book in self.address_books:
+            contacts = [contact.first_name +" "+ contact.last_name for contact in self.address_books.get(address_book) if contact.city == location or contact.state == location]
+            print(contacts)
+    
