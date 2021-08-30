@@ -7,6 +7,7 @@ DELETE_CONTACT = 4
 SEARCH_BY_CITY_OR_STATE = 5
 VIEW_BY_CITY_OR_STATE = 6
 COUNT_BY_CITY_OR_STATE = 7
+SORT_BY_PERSON_NAME = 8
 EXIT = 0
 
 if __name__ == "__main__":
@@ -45,6 +46,9 @@ if __name__ == "__main__":
         
         elif user_choice == COUNT_BY_CITY_OR_STATE:
             console_service.count_number_of_contact_by_location()
+
+        elif user_choice == SORT_BY_PERSON_NAME:
+            console_service.sort_by_person_name()
 
         elif user_choice == EXIT:
             print("Thanks for using us ")
