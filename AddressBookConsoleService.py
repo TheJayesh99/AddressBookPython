@@ -138,6 +138,13 @@ class AddressBookConsoleService:
         else:
             view_contacts = "\n".join(str(contact) for contact in contacts)
             print(view_contacts)
+    
+    def count_number_of_contact_by_location(self):
+        """
+        Method to search person details by their location across the multiple address book and return the count
+        """
+        contacts = self.contact_founder()
+        print(f"The contact having same city or state are : {len(contacts)}")
 
     def contact_founder(self):
 
