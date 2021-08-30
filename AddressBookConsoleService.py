@@ -43,17 +43,23 @@ class AddressBookConsoleService:
         """
         Method to add contact to local storage
         """
-        contact = self.create_contact()
+        new_contact = self.create_contact()
         print("contact created")
         address_book_name = input("Enter the address book name \n")
         address_book = self.address_books.get(address_book_name) 
         # if book does no already exists then creating a new book
         if address_book == None:
-            contact_list = [contact]
+            contact_list = [new_contact]
             self.address_books[address_book_name] = contact_list
+            print("New address book created and contact added to it")
         # if book already exsists then adding contact to existing book   
         else:
-            address_book.append(contact)
+            contact = AddressBookConsoleService.search_by_first_name(address_book,new_contact.first_name)
+            if len(contact) == 0:
+                address_book.append(new_contact)
+                print("Contact added sucessfully")
+            else:
+                print("Contact alread exsist")
 
     def display_contact(self):
 
@@ -73,7 +79,7 @@ class AddressBookConsoleService:
         address_book = self.address_books.get(book_name)
         if address_book != None:
             first_name = input("Enter the person name \n")
-            contact_to_edit = [contact for contact in address_book if contact.first_name == first_name]
+            contact_to_edit = AddressBookConsoleService.search_by_first_name(address_book,first_name)
             if len(contact_to_edit) == 0:
                 print("Contact not found")
             else: 
@@ -91,7 +97,7 @@ class AddressBookConsoleService:
         address_book = self.address_books.get(book_name)
         if address_book != None:
             first_name = input("Enter the person name \n")
-            contact_to_delete = [contact for contact in address_book if contact.first_name == first_name]
+            contact_to_delete = AddressBookConsoleService.search_by_first_name(address_book,first_name)
             if len(contact_to_delete) == 0:
                 print("Contact not found")
             else:
@@ -99,3 +105,12 @@ class AddressBookConsoleService:
                 print("Contact removed sucessfully")
         else:
             print("No such address book")
+    
+    @staticmethod
+    def search_by_first_name(address_book,first_name):
+
+        """
+        This method is used to search the contacts that are having first name same as given in 
+        function parameter of given address book and returns the list of contact have first name 
+        """
+        return  [contact for contact in address_book if contact.first_name == first_name]
