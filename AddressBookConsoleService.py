@@ -1,4 +1,5 @@
 from Contacts import Contact
+import operator
 
 class AddressBookConsoleService:
     
@@ -156,3 +157,13 @@ class AddressBookConsoleService:
         for address_book in self.address_books:
             matched_contacts_with_location.extend([contact for contact in self.address_books.get(address_book) if contact.city == location or contact.state == location])
         return matched_contacts_with_location
+
+    def sort_by_person_name(self):
+
+        """
+        Method to sort contacts in address book by person name 
+        """
+        for address_book in self.address_books:
+            contacts = self.address_books.get(address_book)
+            contacts.sort(key= operator.attrgetter("first_name"))
+        print("Sorted Successfully")
