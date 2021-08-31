@@ -8,6 +8,7 @@ SEARCH_BY_CITY_OR_STATE = 5
 VIEW_BY_CITY_OR_STATE = 6
 COUNT_BY_CITY_OR_STATE = 7
 SORT_BY_PERSON_NAME = 8
+SORT_BY_LOCATION = 9
 EXIT = 0
 
 if __name__ == "__main__":
@@ -16,13 +17,16 @@ if __name__ == "__main__":
     print("Welcome to Address Book Management System")
 
     while True:
-        print(" 1 Add Contact "
+        print("\n What you like to do ...?"
+        "\n 1 Add Contact "
         "\n 2 Display Contact"
         "\n 3 Edit Contact"
         "\n 4 Delete Contact"
         "\n 5 Search by City or State"
         "\n 6 View Person by City or State"
         "\n 7 Count number of contacts having same city or state"
+        "\n 8 Sort contact by name"
+        "\n 9 Sort contact by location"
         "\n 0 Exit")
         user_choice = int(input())
 
@@ -49,6 +53,9 @@ if __name__ == "__main__":
 
         elif user_choice == SORT_BY_PERSON_NAME:
             console_service.sort_by_person_name()
+
+        elif user_choice == SORT_BY_LOCATION:
+            console_service.sort_by_location()
 
         elif user_choice == EXIT:
             print("Thanks for using us ")
