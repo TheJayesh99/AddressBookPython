@@ -2,7 +2,9 @@ from Contacts import Contact
 import operator
 
 class AddressBookConsoleService:
-    
+    ZIP = 1
+    STATE = 2
+    CITY = 3
     address_books = {}
 
     def create_contact(self):
@@ -29,14 +31,14 @@ class AddressBookConsoleService:
         """
         Method to fetch contact details from user
         """
-        contact.first_name = input("Enter first name \n")
-        contact.last_name = input("Enter last name \n")
-        contact.address = input("Enter address \n")
-        contact.city  = input("Enter city \n")
-        contact.state = input("Enter state \n")
-        contact.zip  = input("Enter zip code \n")
-        contact.phone_number = input("Enter phone number \n")
-        contact.email = input("Enter email address \n")
+        contact.first_name = input("Enter first name \n").capitalize()
+        contact.last_name = input("Enter last name \n").capitalize()
+        contact.address = input("Enter address \n").capitalize()
+        contact.city  = input("Enter city \n").capitalize()
+        contact.state = input("Enter state \n").capitalize()
+        contact.zip  = input("Enter zip code \n").capitalize()
+        contact.phone_number = input("Enter phone number \n").capitalize()
+        contact.email = input("Enter email address \n").capitalize()
         return contact
 
     def add_contact(self):
@@ -163,7 +165,33 @@ class AddressBookConsoleService:
         """
         Method to sort contacts in address book by person name 
         """
+        self.sort_by("first_name")
+               
+    def sort_by(self,value):
+
+        """
+        Method to sort contacts
+        """
         for address_book in self.address_books:
             contacts = self.address_books.get(address_book)
-            contacts.sort(key= operator.attrgetter("first_name"))
-        print("Sorted Successfully")
+            contacts.sort(key= operator.attrgetter(value))
+        print("Sorting Successful")
+
+    def sort_by_location(self):
+
+        """
+        Method to sort contacts by location
+        """
+        print("Enter the your choice"
+        "\n 1 zip"
+        "\n 2 state"
+        "\n 3 city")
+        user_choice = int(input())
+        if user_choice == self.ZIP:
+            self.sort_by("zip")
+        elif user_choice == self.STATE:
+            self.sort_by("state")
+        elif user_choice == self.CITY:
+            self.sort_by("city")
+        else:
+            print("Invaild option")
