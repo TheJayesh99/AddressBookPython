@@ -1,16 +1,6 @@
 {
     "Family": [
         {
-            "first_name": "Jayesh",
-            "last_name": "Mali",
-            "address": "Mumbai",
-            "city": "Panvel",
-            "state": "Maharasthra",
-            "zip": "123211",
-            "phone_number": 9632587410,
-            "email": "Jay@mail.com"
-        },
-        {
             "first_name": "Ashwin",
             "last_name": "Kumar",
             "address": "Panvel",
@@ -19,19 +9,19 @@
             "zip": "123456",
             "phone_number": "9514786320",
             "email": "Ash@mail.com"
+        },
+        {
+            "first_name": "Jayesh",
+            "last_name": "Mali",
+            "address": "Mumbai",
+            "city": "Panvel",
+            "state": "Maharasthra",
+            "zip": "123211",
+            "phone_number": "9632587410",
+            "email": "Jay@mail.com"
         }
     ],
     "Friend": [
-        {
-            "first_name": "Omkar",
-            "last_name": "Chikane",
-            "address": "Koparkherane",
-            "city": "Navi mumbai",
-            "state": "Goa ",
-            "zip": "123212",
-            "phone_number": 7894561230,
-            "email": "Om@mail.com"
-        },
         {
             "first_name": "Abhishek",
             "last_name": "Jdv",
@@ -39,8 +29,28 @@
             "city": "Kalyan",
             "state": "Delhi",
             "zip": "123321",
-            "phone_number": 9874563210,
+            "phone_number": "9874563210",
             "email": "Abhi@mail.com"
+        },
+        {
+            "first_name": "Jay",
+            "last_name": "Mali",
+            "address": "Mumbai",
+            "city": "Mumbai",
+            "state": "Kasmir",
+            "zip": "123098",
+            "phone_number": "9874123650",
+            "email": "jay@mail.com"
+        },
+        {
+            "first_name": "Omkar",
+            "last_name": "Chikane",
+            "address": "Koparkherane",
+            "city": "Navi mumbai",
+            "state": "Goa ",
+            "zip": "123212",
+            "phone_number": "7894561230",
+            "email": "Om@mail.com"
         }
     ]
 }

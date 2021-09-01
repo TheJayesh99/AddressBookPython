@@ -12,6 +12,8 @@ SORT_BY_PERSON_NAME = 8
 SORT_BY_LOCATION = 9
 WRITING_IN_JSON = 10
 READ_FROM_JSON = 11
+WRITING_IN_CSV = 12
+READ_FROM_CSV = 13
 EXIT = 0
 
 if __name__ == "__main__":
@@ -33,6 +35,8 @@ if __name__ == "__main__":
         "\n 9  Sort contact by location"
         "\n 10 Writing in json file"
         "\n 11 Read from json file"
+        "\n 12 Writing in csv file"
+        "\n 13 Read from csv file"
         "\n 0  Exit")
         user_choice = int(input())
 
@@ -68,6 +72,12 @@ if __name__ == "__main__":
 
         elif user_choice == READ_FROM_JSON:
             file_service.read_from_json()
+
+        elif user_choice == WRITING_IN_CSV:
+            file_service.write_in_csv()
+        
+        elif user_choice == READ_FROM_CSV:
+            file_service.read_from_csv()
 
         elif user_choice == EXIT:
             print("Thanks for using us ")
