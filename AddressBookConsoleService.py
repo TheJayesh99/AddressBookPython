@@ -2,9 +2,7 @@ from Contacts import Contact
 import operator
 
 class AddressBookConsoleService:
-    ZIP = 1
-    STATE = 2
-    CITY = 3
+    
     address_books = {}
 
     def create_contact(self):
@@ -19,7 +17,7 @@ class AddressBookConsoleService:
             "city" : "",
             "state" : "",
             "zip" : "",
-            "number" : "",
+            "phone_number" : "",
             "email" : ""
         }
         contact = Contact(contact_dict)
@@ -38,7 +36,7 @@ class AddressBookConsoleService:
         contact.state = input("Enter state \n").capitalize()
         contact.zip  = input("Enter zip code \n").capitalize()
         contact.phone_number = input("Enter phone number \n").capitalize()
-        contact.email = input("Enter email address \n").capitalize()
+        contact.email = input("Enter email address \n")
         return contact
 
     def add_contact(self):
@@ -48,7 +46,7 @@ class AddressBookConsoleService:
         """
         new_contact = self.create_contact()
         print("contact created")
-        address_book_name = input("Enter the address book name \n")
+        address_book_name = input("Enter the address book name \n").capitalize()
         address_book = self.address_books.get(address_book_name) 
         # if book does no already exists then creating a new book
         if address_book == None:
@@ -78,10 +76,10 @@ class AddressBookConsoleService:
         """
         Method to edit existing contact
         """
-        book_name = input("Enter the address book name ")
+        book_name = input("Enter the address book name ").capitalize()
         address_book = self.address_books.get(book_name)
         if address_book != None:
-            first_name = input("Enter the person name \n")
+            first_name = input("Enter the person name \n").capitalize()
             contact_to_edit = AddressBookConsoleService.search_by_first_name(address_book,first_name)
             if len(contact_to_edit) == 0:
                 print("Contact not found")
@@ -96,10 +94,10 @@ class AddressBookConsoleService:
         """
         Method to delete contact from address book
         """
-        book_name = input("Enter the address book name ")
+        book_name = input("Enter the address book name ").capitalize()
         address_book = self.address_books.get(book_name)
         if address_book != None:
-            first_name = input("Enter the person name \n")
+            first_name = input("Enter the person name \n").capitalize()
             contact_to_delete = AddressBookConsoleService.search_by_first_name(address_book,first_name)
             if len(contact_to_delete) == 0:
                 print("Contact not found")
@@ -143,6 +141,7 @@ class AddressBookConsoleService:
             print(view_contacts)
     
     def count_number_of_contact_by_location(self):
+        
         """
         Method to search person details by their location across the multiple address book and return the count
         """
@@ -154,7 +153,7 @@ class AddressBookConsoleService:
         """
         Method to search contact by location  
         """
-        location = input("Enter the city or state of which contacts name you have to find \n")
+        location = input("Enter the city or state of which contacts name you have to find \n").capitalize()
         matched_contacts_with_location = []
         for address_book in self.address_books:
             matched_contacts_with_location.extend([contact for contact in self.address_books.get(address_book) if contact.city == location or contact.state == location])
@@ -187,11 +186,11 @@ class AddressBookConsoleService:
         "\n 2 state"
         "\n 3 city")
         user_choice = int(input())
-        if user_choice == self.ZIP:
+        if user_choice == "1":
             self.sort_by("zip")
-        elif user_choice == self.STATE:
+        elif user_choice == "2":
             self.sort_by("state")
-        elif user_choice == self.CITY:
+        elif user_choice == "3":
             self.sort_by("city")
         else:
             print("Invaild option")
